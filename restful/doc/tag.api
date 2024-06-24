@@ -1,0 +1,28 @@
+syntax = "v1"
+
+info(
+    title: "tag doc"
+)
+
+import "base_resp.api"
+
+type (
+    Tag {
+        Id int64 `json:"id"`
+        TagName string `json:"tagName"`
+    }
+
+    TagListResp {
+        BaseResp
+        Data []Tag `json:"data"`
+    }
+
+    AddTagReq {
+        TagName string `json:"tagName"`
+    }
+
+    AddTagResp {
+        BaseResp
+        Data Tag `json:"data"`
+    }
+)

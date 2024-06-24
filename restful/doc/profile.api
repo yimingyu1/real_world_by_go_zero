@@ -1,0 +1,37 @@
+syntax = "v1"
+
+import (
+    "base_resp.api"
+)
+
+info (
+    title: "profile doc"
+)
+
+type (
+
+    Profile {
+        UserId int64 `json:"userId"`
+        UserName string `json:"username"`
+        Bio string `json:"bio"`
+        Following bool `json:"following"`
+    }
+
+    GetProfileReq {
+        UserId string `json:"userId"`
+    }
+
+    ProfileResp {
+        BaseResp
+        Data Profile `json:"data"`
+    }
+
+    FollowUserReq {
+        UserId string `json:"userId"`
+    }
+
+    UnfollowUser {
+        UserId string `json:"userId"`
+    }
+
+)

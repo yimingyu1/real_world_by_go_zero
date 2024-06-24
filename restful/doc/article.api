@@ -1,0 +1,85 @@
+syntax = "v1"
+
+info(
+    title: "article doc"
+)
+
+import (
+    "profile.api"
+    "base_resp.api"
+)
+
+type (
+    Article {
+        Id int64 `json:"id"`
+        Title string `json:"title"`
+        Description string `json:"description"`
+        Body string `json:"body"`
+        TagList []string `json:"tagList"`
+        CreatedAt string `json:"createdAt"`
+        UpdatedAt string `json:"updatedAt"`
+        Favorited bool `json:"favorited"`
+        FavoritesCount int64 `json:"favoritesCount"`
+        Author Profile `json:"author"`
+    }
+
+    GetArticleListReq {
+        Tag string `json:"tag"`
+        Author string `json:"author"`
+        Favorited string `json:"favorited"`
+        Limit int64 `json:"limit"`
+        Offset int64 `json:"offset"`
+    }
+    ArticleListRespData {
+        Articles []Article `json:"articles"`
+        ArticlesCount int64 `json:"articlesCount"`
+    }
+    ArticleListResp {
+        BaseResp
+        Data ArticleListRespData `json:"data"`
+    }
+
+    GetArticleReq {
+        ArticleId int64 `json:"articleId"`
+    }
+
+    ArticleResp {
+        BaseResp
+        Data Article `json:"data"`
+    }
+
+    CreateArticleReq {
+        Title string `json:"title"`
+        Description string `json:"description"`
+        Body string `json:"body"`
+        TagList []int64 `json:"tagList"`
+    }
+
+    UpdateArticleReq {
+        ArticleId int64 `json:"articleId"`
+        Body string `json:"body"`
+    }
+
+    DeleteArticleReq {
+        ArticleId int64 `json:"articleId"`
+    }
+
+    DeleteArticleResp {
+        BaseResp
+        Data string `json:"data"`
+    }
+
+    FavoriteArticleReq {
+        ArticleId int64 `json:"articleId"`
+    }
+
+    UnfavoriteArticleReq {
+        ArticleId int64 `json:"articleId"`
+    }
+
+    UnfavoriteArticleResp {
+        BaseResp
+        Data string `json:"data"`
+    }
+
+)
